@@ -19,7 +19,7 @@ Good Life
 <...>
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/15X3EFlo62neAYYZZge86jE4cFSwg0q1C_EKQD5TlaIg/edit#gid=0>
+<https://docs.google.com/spreadsheets/d/1OW-SU8B4oI3z_WaZojuOk5Nj2-1XPcb4T9H9_AjxbPY/edit#gid=0>
 
 ## 開発環境
 - OS：Linux(CentOS)
