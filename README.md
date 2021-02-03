@@ -14,7 +14,7 @@
 
 ### 主な利用シーン
 何気ない出来事など生活で困っていることなどがある時、生活に役立つ情報を収集・発信・共有
-楽し味方の発信・共有
+楽しみ方の発信・共有
 
 ## 機能一覧
 <https://docs.google.com/spreadsheets/d/1OW-SU8B4oI3z_WaZojuOk5Nj2-1XPcb4T9H9_AjxbPY/edit#gid=0>
