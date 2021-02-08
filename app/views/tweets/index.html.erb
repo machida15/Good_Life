@@ -1,6 +1,8 @@
 <% @tweets.each do |tweet| %>
 <div>
+  <figure class="image is-2by1">
     <%= attachment_image_tag tweet, :image %>
+  </figure>
   <P>ユーザーネーム:<%= tweet.user.name %></P>
   <%= link_to tweet_path(tweet.id) do %>
   <p>つぶやき:<%= tweet.body %></p>

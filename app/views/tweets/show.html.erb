@@ -1,5 +1,7 @@
 <div class="post-body">
+  <figure class="image is-2by1">
   <%= attachment_image_tag @tweet, :image %>
+  </figure>
   <P>ユーザーネーム:<%= @tweet.user.name %></P>
   <p>つぶやき:<%= @tweet.body %></p>
   <p>投稿画像:<%= image_tag('no_image.jpg')%></p>
