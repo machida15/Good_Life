@@ -1,0 +1,10 @@
+<% @tweets.each do |tweet| %>
+<div>
+  <%= attachment_image_tag tweet, :image %>
+  <P>ユーザーネーム:<%= tweet.user.name %></P>
+  <%= link_to tweet_path(tweet.id) do %>
+  <p>つぶやき:<%= tweet.body %></p>
+  <% end %>
+  <p>投稿画像:<%= image_tag('no_image.jpg')%></p>
+</div>
+<% end %>

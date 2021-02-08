@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GOODLife</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+      <% if flash[:notice] %>
+        <div class="notification is-info">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="notification is-danger">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+
+
+      <%= link_to root_path, class: "navbar-item" do  %>
+      <h1>Good life</h1>
+      <% end %>
+     <div class="tabs">
+      <ul>
+      <% if user_signed_in? %>
+        <%= link_to "ホーム", class: "button is-primary" %>
+        <%= link_to "マイページ", tweets_path %>
+        <%= link_to "つぶやき", new_tweet_path %>
+        <%= link_to "通知" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% else %>
+       <%= link_to "ログイン",new_user_session_path %>
+       <%= link_to "新規登録",new_user_registration_path %>
+      <% end %>
+      </ul>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<div class="post-body">
+  <%= attachment_image_tag @tweet, :image %>
+  <P>ユーザーネーム:<%= @tweet.user.name %></P>
+  <p>つぶやき:<%= @tweet.body %></p>
+  <p>投稿画像:<%= image_tag('no_image.jpg')%></p>
+  <p>投稿日時：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @tweet.user == current_user %>
+    <%= link_to "削除", tweet_path(@tweet), method: :delete %>
+  <% end %>
+</div>
