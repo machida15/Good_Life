@@ -1,24 +1,31 @@
-# README
+# Good Life
+## サイト概要
+一人暮らしの男性の生活スタイルや工夫、一人ならでは楽しみ方を共有できるサイト、
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### サイトテーマ
+一人暮らしのスタイルや生活の工夫、一人暮らしの楽しみ方などを投稿できる場にして情報交換ができるようにし楽しみ方の発見や一人暮らしの不安や問題などを投稿などを参考に解消できればいいと考えています。コロナの影響で不安がより一層強まっている方なども多いと思うので楽しいことを見つけたり、不安に思っていることが一緒などで孤独感を解消できるようなサービスにしたいと思っています。
 
-Things you may want to cover:
+### テーマを選んだ理由
+現状社会は生きやすいとはいえない状況だと思います。コロナで外出も自由にできない地域もあると思います。人との関わりをあまり作れていない方の孤独感を解消したいと考えたため
 
-* Ruby version
+### ターゲットユーザ
+一人暮らしの男性、コロナの影響などで人との関わりがあまり取れていなくて孤独感を感じている方
+暮らしに役立つ情報が欲しい方、新しい楽しみを探している方、これから一人暮らしを考えている方
 
-* System dependencies
+### 主な利用シーン
+何気ない出来事など生活で困っていることなどがある時、生活に役立つ情報を収集・発信・共有
+楽しみ方の発信・共有
 
-* Configuration
+## 機能一覧
+<https://docs.google.com/spreadsheets/d/1OW-SU8B4oI3z_WaZojuOk5Nj2-1XPcb4T9H9_AjxbPY/edit#gid=0>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
