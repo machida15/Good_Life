@@ -1,12 +1,72 @@
-<div class="post-body">
-  <figure class="image is-2by1">
-  <%= attachment_image_tag @tweet, :image %>
-  </figure>
-  <P>ユーザーネーム:<%= @tweet.user.name %></P>
-  <p>つぶやき:<%= @tweet.body %></p>
-  <p>投稿画像:<%= image_tag('no_image.jpg')%></p>
-  <p>投稿日時：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @tweet.user == current_user %>
-    <%= link_to "削除", tweet_path(@tweet), method: :delete %>
-  <% end %>
-</div>
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        つぶやき
+      </h1>
+    </div>
+  </div>
+</section>
+
+  <section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                  <div class="colums">
+                    <div class="colum">
+                      <p class="image is-64x64"><%= attachment_image_tag @tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
+                  　　<P><%= @tweet.user.name %></P>
+                    　<p><%= @tweet.body %></p>
+                    　  <figure class="image is-2by1">
+                        <%= attachment_image_tag @tweet, :image  %>
+                       </figure>
+                      <p>投稿日時：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% if @tweet.user.id == current_user.id %>
+                <%= link_to "編集画面へ", edit_tweet_path(@tweet), class: "button is-success" %>
+                <% end %>
+                <% if @tweet.user == current_user %>
+                <%= link_to "削除", tweet_path(@tweet), method: :delete, class: "button is-success" %>
+                <% end %>
+
+                <% if @tweet.favorited_by?(current_user) %>
+                <p>
+                <%= link_to tweet_favorites_path(@tweet), method: :delete, remote: true do %>
+                ♥<%= @tweet.favorites.count %> いいね
+                <% end %>
+                </p>
+                <% else %>
+                <p>
+                <%= link_to tweet_favorites_path(@tweet), method: :post, remote: true do %>
+                ♡<%= @tweet.favorites.count %> いいね
+                <% end %>
+                </p>
+
+                <% end %>
+                <div class="colum">
+                <p>コメント件数：<%= @tweet.tweet_comments.count %></p>
+                <% @tweet.tweet_comments.each do |tweet_comment| %>
+               <p class="image is-64x64"><%= attachment_image_tag tweet_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
+                <%= tweet_comment.user.name %>
+                <%= tweet_comment.comment %>
+                <%= tweet_comment.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <% if tweet_comment.user == current_user %>
+                <div class="comment-delete">
+                <%= link_to "削除", tweet_tweet_comment_path(tweet_comment.tweet, tweet_comment), method: :delete, class: "button is-success" %>
+                </div>
+                <% end %>
+                <% end %>
+                <%= form_with(model:[@tweet, @tweet_comment], local: true) do |f| %>
+                <%= f.text_area :comment, rows:'10',placeholder: "コメントをここに",class: "textarea" %>
+                <%= f.submit "送信する", class: "button is-success" %>
+              　<% end %>
+            </div>

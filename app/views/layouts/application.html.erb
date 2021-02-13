@@ -30,14 +30,16 @@
      <div class="tabs">
       <ul>
       <% if user_signed_in? %>
-        <%= link_to "ホーム", class: "button is-primary" %>
-        <%= link_to "マイページ", tweets_path %>
+        <%= link_to "投稿一覧", tweets_path %>
         <%= link_to "つぶやき", new_tweet_path %>
+        <%= link_to "ユーザー覧", users_path %>
+        <%= link_to "マイページ",user_path(current_user.id) %>
         <%= link_to "通知" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% else %>
        <%= link_to "ログイン",new_user_session_path %>
        <%= link_to "新規登録",new_user_registration_path %>
+       <%= link_to "about"%>
       <% end %>
       </ul>
     </div>

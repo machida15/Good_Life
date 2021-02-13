@@ -12,11 +12,29 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.page(params[:page]).reverse_order
+    # @user = User.find(params[:id])
   end
 
   def show
     @tweet = Tweet.find(params[:id])
+    @tweet_comment = TweetComment.new
+  end
+
+  def edit
+     @tweet = Tweet.find(params[:id])
+     if @tweet.user != current_user
+      redirect_to tweet_path, alert: '不正なアクセスです。'
+     end
+  end
+
+  def update
+    @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to tweet_path(@tweet), notice: "レシピを更新しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
