@@ -1,4 +1,4 @@
-<section class="hero is-primary is-light">
+<section class="hero is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -15,22 +15,24 @@
         <div class="columns is-centered">
           <div class="column is-4">
             <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
-      <p class= "image"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "is-rounded" %></p>
-        </figure>
-        </div>
-        <div class="column is-8">
+              <p class= "image"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "is-rounded" %></p>
+            </figure>
+            </div>
+            <div class="column is-8">
             <table class="table is-fullwidth">
               <tr>
                 <td class="is-size-4">
                    <strong><%= @user.name %></strong>
                 </td>
                  <td>
-                  フォロワー数
-                  フォロー数
+                  <%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user) %>
+                 </td>
+                 <td>
+                  <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user) %>
                 </td>
                 <td>
                     <% if @user.id == current_user.id %>
-                    <div class="button is-primary"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+                    <div class="button is-success is-rounded is-outlined"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
                     <% end %>
                 </td>
                  </tr>
@@ -52,22 +54,41 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
-
-<% @tweets.each do |tweet| %>
-<div class="column is-4">
+        <% @tweets.each do |tweet| %>
+        <div class="column is-4">
           <div class="card">
-  <!--<figure class="image is-2by1">-->
-    <%= attachment_image_tag tweet, :image %>
-  <!--</figure>-->
-  <p><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-   <p>ユーザーネーム：<%= tweet.user.name %></p>
-  <%= link_to tweet_path(tweet.id) do %>
-  <p><%= tweet.body %></p>
-  <% end %>
-</div>
-</div>
-<% end %>
-
-<%= paginate @tweets %>
- </div>
-</div>
+             <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
+              <p><%= tweet.user.name %></p>
+                  <%= link_to tweet_path(tweet.id) do %>
+              <p><%= tweet.body %></p>
+                <% end %>
+              <figure class="image is-2by1">
+                <%= attachment_image_tag tweet, :image, fallback: "no_image.jpg" %>
+              </figure>
+               <%= link_to tweet_path(tweet.id), class: "panel-block" do %>
+                    <span class="panel-icon">
+                      <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    つぶやきを見る
+                  <% end %>
+             <% if @user.id == current_user.id %>
+             <%= link_to edit_tweet_path(tweet.id), class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-edit"></i>
+                      </span>
+                      このつぶやきを編集する
+                    <% end %>
+             <%= link_to tweet_path(tweet), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-trash"></i>
+                      </span>
+                      このつぶやきを削除する
+                    <% end %>
+                  <% end %>
+            </div>
+          </div>
+          <% end %>
+       <%= paginate @tweets %>
+    </div>
+  </div>
+</section>

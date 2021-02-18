@@ -1,4 +1,4 @@
-<section class="hero is-success">
+<section class="hero is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -8,15 +8,15 @@
   </div>
 </section>
 
-  <section class="section">
+<section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-7">
         <div class="card">
           <div class="card-image">
             <div class="card-content">
-            <div class="media">
-              <div class="media-content">
+              <div class="media">
+              　<div class="media-content">
                   <div class="colums">
                     <div class="colum">
                       <p class="image is-64x64"><%= attachment_image_tag @tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
@@ -26,15 +26,12 @@
                         <%= attachment_image_tag @tweet, :image  %>
                        </figure>
                       <p>投稿日時：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <% if @tweet.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_tweet_path(@tweet), class: "button is-success" %>
                 <% end %>
                 <% if @tweet.user == current_user %>
-                <%= link_to "削除", tweet_path(@tweet), method: :delete, class: "button is-success" %>
+                <%= link_to "削除", tweet_path(@tweet), method: :delete, data: {confirm: "削除しますか？"}, class: "button is-success" %>
                 <% end %>
 
                 <% if @tweet.favorited_by?(current_user) %>
@@ -49,6 +46,10 @@
                 ♡<%= @tweet.favorites.count %> いいね
                 <% end %>
                 </p>
+                   </div>
+                  </div>
+                </div>
+              </div>
 
                 <% end %>
                 <div class="colum">
@@ -61,7 +62,7 @@
                 </div>
                 <% if tweet_comment.user == current_user %>
                 <div class="comment-delete">
-                <%= link_to "削除", tweet_tweet_comment_path(tweet_comment.tweet, tweet_comment), method: :delete, class: "button is-success" %>
+                <%= link_to "削除", tweet_tweet_comment_path(tweet_comment.tweet, tweet_comment), method: :delete, data: {confirm: "削除しますか？"}, class: "button is-success" %>
                 </div>
                 <% end %>
                 <% end %>
@@ -70,3 +71,4 @@
                 <%= f.submit "送信する", class: "button is-success" %>
               　<% end %>
             </div>
+            </section>

@@ -1,4 +1,4 @@
-<section class="hero is-success">
+<section class="hero is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -7,6 +7,17 @@
     </div>
   </div>
 </section>
+
+<% if @user.errors.any? %>
+  <div class="notification is-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
 <section class="section">
   <div class="container">

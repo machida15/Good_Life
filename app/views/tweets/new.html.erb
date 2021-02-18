@@ -1,3 +1,23 @@
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        新規投稿
+      </h1>
+    </div>
+  </div>
+</section>
+
+<% if @tweet.errors.any? %>
+  <div class="notification is-danger">
+    <ul>
+      <% @tweet.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -13,7 +33,7 @@
             <%= f.attachment_field :image, class: "input" %>
           </div>
 
-          <%= f.submit '投稿', class: "button is-success" %>
+          <%= f.submit '投稿', class: "button is-dark is-outlined" %>
         <% end %>
       </div>
     </div>

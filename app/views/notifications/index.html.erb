@@ -1,0 +1,18 @@
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        通知
+      </h1>
+    </div>
+  </div>
+</section>
+    <%= link_to notification_path(@notifications), method: :delete do %>
+        <div class="button is-success">全削除</div>
+    <% end %>
+    <hr>
+    <% if @notifications.exists? %>
+            <%= render @notifications %>
+    <% else %>
+        <p>通知はありません</p>
+    <% end %>

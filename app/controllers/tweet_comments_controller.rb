@@ -4,8 +4,12 @@ class TweetCommentsController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     comment = current_user.tweet_comments.new(tweet_comment_params)
     comment.tweet_id = tweet.id
-    comment.save
-    redirect_to tweet_path(tweet)
+    @comment_tweet= comment.tweet
+    if comment.save
+       @comment_tweet.create_notification_comment!(current_user, comment.id)
+      redirect_to request.referer
+    end
+    # redirect_to tweet_path(tweet)
   end
 
   def destroy
