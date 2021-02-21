@@ -1,27 +1,4 @@
-<section class="hero is-small is-dark">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title is-white">
-        投稿一覧
-      </h1>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <p>検索</p>
-    　　　<%= form_tag(tweets_search_path,:method => 'get') do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag '検索', :body => nil %>
-        <% end %>
-    </div>
-　</div>
-</section>
-
-<section class="section">
+  <section class="section">
   <div class="container">
     <div class="columns is-multiline">
     <% @tweets.each do |tweet| %>
@@ -60,7 +37,7 @@
       </div>
     <% end %>
     <!--フォロー機能-->
-    <%= paginate @tweets %>
+    <%#= paginate @tweets %>
     </div>
    </div>
  </section>

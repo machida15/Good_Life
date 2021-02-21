@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        sign up
+        Sign up
       </h1>
     </div>
   </div>
@@ -16,12 +16,22 @@
 
        <div class="field">
           <%= f.label :name %><br />
+          <p class="control has-icons-left">
           <%= f.text_field :name, autofocus: true, autocomplete: "name", :placeholder => "name", class: "input" %>
+          <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            </p>
         </div>
 
         <div class="field">
           <%= f.label :email %><br />
+           <p class="control has-icons-left">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
+           <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
         </div>
 
         <div class="field">
@@ -29,12 +39,22 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
+          <p class="control has-icons-left">
           <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input" %>
+          <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation %><br />
+          <p class="control has-icons-left">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
+          <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
 
         <div class="actions">

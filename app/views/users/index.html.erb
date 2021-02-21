@@ -1,4 +1,4 @@
-<section class="hero is-dark">
+<section class="hero is-small is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -37,6 +37,7 @@
               <div class="content">
                 投稿数：<%= user.tweets.count %>
               </div>
+              <%= render "relationships/follow_button", user: user %>
             </div>
           </div>
         </div>

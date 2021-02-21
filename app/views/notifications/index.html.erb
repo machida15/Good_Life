@@ -1,4 +1,4 @@
-<section class="hero is-dark">
+<section class="hero is-small is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -7,12 +7,11 @@
     </div>
   </div>
 </section>
-    <%= link_to notification_path(@notifications), method: :delete do %>
-        <div class="button is-success">全削除</div>
+    <%= link_to notification_path(@notifications), method: :delete, data: {confirm: "削除しますか？"} do %>
+    <div class="button is-success">全削除</div>
     <% end %>
-    <hr>
     <% if @notifications.exists? %>
-            <%= render @notifications %>
+    <%= render @notifications %>
     <% else %>
-        <p>通知はありません</p>
+    <p>通知はありません</p>
     <% end %>

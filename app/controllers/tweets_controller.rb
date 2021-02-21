@@ -45,7 +45,12 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to tweets_path
   end
-
+  
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @tweets = Tweet.search(params[:search])
+  end
+  
   private
 
   def tweet_params

@@ -48,4 +48,12 @@ class Tweet < ApplicationRecord
         notification.save if notification.valid?
   end
 
+  def self.search(search)
+      if search
+        Tweet.where(['body LIKE ?', "%#{search}%"])
+      else
+        Tweet.all
+      end
+  end
+
 end

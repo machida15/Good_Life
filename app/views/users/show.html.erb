@@ -1,4 +1,4 @@
-<section class="hero is-dark">
+<section class="hero is-small is-dark">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     <% if @user.id == current_user.id %>
-                    <div class="button is-success is-rounded is-outlined"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+                    <div class="button is-outlined"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
                     <% end %>
                 </td>
                  </tr>
@@ -59,12 +59,11 @@
           <div class="card">
              <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
               <p><%= tweet.user.name %></p>
-                  <%= link_to tweet_path(tweet.id) do %>
-              <p><%= tweet.body %></p>
-                <% end %>
+              <p class="column is-full"><%= tweet.body %></p>
               <figure class="image is-2by1">
                 <%= attachment_image_tag tweet, :image, fallback: "no_image.jpg" %>
               </figure>
+
                <%= link_to tweet_path(tweet.id), class: "panel-block" do %>
                     <span class="panel-icon">
                       <i class="fas fa-book" aria-hidden="true"></i>
