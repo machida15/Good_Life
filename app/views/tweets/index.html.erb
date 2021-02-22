@@ -40,19 +40,7 @@
             </figure>
           </div>
 　　　　　　<!--いいね機能-->
-           <% if tweet.favorited_by?(current_user) %>
-                <p>
-                <%= link_to tweet_favorites_path(tweet), method: :delete, remote: true do %>
-                ♥<%= tweet.favorites.count %> いいね
-                <% end %>
-                </p>
-                <% else %>
-                <p>
-                <%= link_to tweet_favorites_path(tweet), method: :post, remote: true do %>
-                ♡<%= tweet.favorites.count %> いいね
-                <% end %>
-                </p>
-                 <% end %>
+         <%= render "tweets/favorites", tweet: tweet%>
 
          <p><%= link_to "#{tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %></p>
           <%= render "relationships/follow_button", user: tweet.user %>
