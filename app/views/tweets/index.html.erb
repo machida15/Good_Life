@@ -27,7 +27,7 @@
     <% @tweets.each do |tweet| %>
       <div class="column is-4">
           <div class="card">
-          <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, fallback: "no_image.jpg",class: "is-rounded" %></p>
+          <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg",class: "is-rounded" %></p>
           <p><%= link_to tweet.user.name, user_path(tweet.user.id) %></p>
           <%= link_to tweet_path(tweet.id) do %>
             <p><%= tweet.body %></p>
