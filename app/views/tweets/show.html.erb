@@ -19,7 +19,7 @@
               　<div class="media-content">
                   <div class="colums">
                     <div class="colum">
-                      <p class="image is-64x64"><%= attachment_image_tag @tweet.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",class: "is-rounded" %></p>
+                      <p class="image is-64x64"><%= attachment_image_tag @tweet.user, :profile_image, fallback: "no_image.jpg",class: "is-rounded" %></p>
                   　　<P><%= @tweet.user.name %></P>
                     　<p><%= @tweet.body %></p>
                     　  <figure class="image is-2by1">
