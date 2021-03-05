@@ -12,7 +12,7 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <p>検索</p>
+      <p>投稿検索</p>
     　　　<%= form_tag(tweets_search_path,:method => 'get') do %>
         <%= text_field_tag :search %>
         <%= submit_tag '検索', :body => nil %>
@@ -24,31 +24,30 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
-    <% @tweets.each do |tweet| %>
-      <div class="column is-4">
+      <% @tweets.each do |tweet| %>
+        <div class="column is-4">
           <div class="card">
-          <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg",class: "is-rounded" %></p>
-          <p><%= link_to tweet.user.name, user_path(tweet.user.id) %></p>
-          <%= link_to tweet_path(tweet.id) do %>
+            <p class="image is-64x64"><%= attachment_image_tag tweet.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg",class: "is-rounded" %></p>
+            <p><%= link_to tweet.user.name, user_path(tweet.user.id) %></p>
+            <%= link_to tweet_path(tweet.id) do %>
             <p><%= tweet.body %></p>
-          <% end %>
-          <div class="card-image">
-              <figure class="image is-2by1">
-                <%= link_to tweet_path(tweet) do %>
-              <%= attachment_image_tag tweet, :image,fallback: "no_image.jpg" %>
-              <% end %>
-            </figure>
-          </div>
-　　　　　　<!--いいね機能-->
-         <%= render "tweets/favorites", tweet: tweet%>
-
-         <p><%= link_to "#{tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %></p>
-          <%= render "relationships/follow_button", user: tweet.user %>
-        </div>
-      </div>
-    <% end %>
-    <!--フォロー機能-->
-    <%= paginate @tweets %>
+            <% end %>
+              <div class="card-image">
+                <figure class="image is-2by1">
+                  <%= link_to tweet_path(tweet) do %>
+                  <%= attachment_image_tag tweet, :image,fallback: "no_image.jpg" %>
+                  <% end %>
+                </figure>
+              </div>
+　　　　　　  <!--いいね機能-->
+              <%= render "tweets/favorites", tweet: tweet%>
+              <p><%= link_to "#{tweet.tweet_comments.count} コメント", tweet_path(tweet.id) %></p>
+              <%= render "relationships/follow_button", user: tweet.user %>
+             </div>
+           </div>
+           <% end %>
+           <!--フォロー機能-->
+           <%= paginate @tweets %>
     </div>
-   </div>
- </section>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+$('#tweets_<%= @tweets.id %>').html("<%= j(render 'tweets/favorites', { tweet: @tweets }) %>");
+$('#tweets_<%= @tweet.id %>').html("<%= j(render 'tweets/favorites', { tweet: @tweet }) %>");

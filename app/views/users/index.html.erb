@@ -13,6 +13,7 @@
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
@@ -23,7 +24,7 @@
               <div class="card-image">
                 <figure class="image">
                  <%= link_to user_path(user) do %>
-                    <p class="image"><%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",class: "is-rounded" %></p>
+                    <%= attachment_image_tag user, :profile_image, :fill, 256,256, fallback: "no_image.jpg",class: "is-rounded" %>
                   <% end %>
                 </figure>
               </div>
@@ -36,8 +37,8 @@
               </div>
               <div class="content">
                 投稿数：<%= user.tweets.count %>
+                <%= render "relationships/follow_button", user: user %>
               </div>
-              <%= render "relationships/follow_button", user: user %>
             </div>
           </div>
         </div>

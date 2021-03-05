@@ -13,5 +13,18 @@
     <% if @notifications.exists? %>
     <%= render @notifications %>
     <% else %>
-    <p>通知はありません</p>
+    <section class="section">
+     <div class="container">
+      <div class="columns is-centered">
+       通知はありません
+      </div>
+　   </div>
+   </section>
     <% end %>
+      <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+          <p class="bd-notification is-primary">
+            <%= paginate @notifications %>
+          </p>
+        </div>
+      </div>

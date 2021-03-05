@@ -22,23 +22,23 @@
         </div>
       <% end %>
 
-       <nav class="navbar">
+      <nav class="navbar">
       <div class="navbar-brand">
       <%= link_to root_path, class: "navbar-item" do  %>
-      <h1>Good life</h1>
+     <h1 class="title is-4" style="font-family: Georgia;">Good Life</h1>
       <% end %>
       </div>
      <div class="tabs">
       <% if user_signed_in? %>
-        <%= link_to "投稿一覧", tweets_path %>
-        <%= link_to "新規投稿", new_tweet_path %>
-        <%= link_to "ユーザー覧", users_path %>
-        <%= link_to "マイページ",user_path(current_user.id) %>
-        <%= link_to "通知", notifications_path %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "投稿一覧", tweets_path, class: "fas fa-image" %>
+        <%= link_to "新規投稿", new_tweet_path, class: "fas fa-paper-plane" %>
+        <%= link_to "ユーザー覧", users_path, class: "fas fa-users" %>
+        <%= link_to "マイページ",user_path(current_user.id), class: "fas fa-user-alt" %>
+        <%= link_to "通知", notifications_path, class: "fas fa-bell" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
       <% else %>
-        <%= link_to "ログイン",new_user_session_path %>
-        <%= link_to "新規登録",new_user_registration_path %>
+        <%= link_to "ログイン",new_user_session_path, class: "fas fa-sign-in-alt" %>
+        <%= link_to "新規登録",new_user_registration_path, class: "fas fa-user-plus" %>
       <% end %>
 
     </div>
